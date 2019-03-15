@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+ 	
+	<head>
+
+		<script type = "text/javascript">
+
+			let mainNav = document.getElementById('js-menu');
+			let navBarToggle = document.getElementById('js-navbar-toggle');
+			var dropdown = document.getElementById('my');
+
+
+
+			function Init() {
+		    retrieve.addEventListener("click", retrieve, false);
+			}
+
+			function append_json(data){
+				var list = document.getElementById('mylist');
+				data.forEach(function(object){
+					var ul = document.createElement('ul');
+					ul.innerHTML = '<li>' + object.name + '</li>' + 
+					'<li>' + object.data + '</li>';
+					ul.appendChild(ul);
+				});
+			}
+
+			function retrieve(){
+				var url = 'my.json'
+
+				GetJSON(url).then(data1 =>{
+					cosole.log(data1.name);
+					var result = document.getElementById("result");
+					result.textContent = data1.name + data1.data;
+				});
+			}
+
+
+
+			function GetJSON(url) {
+			    var p = new Promise((resolve, reject) => {
+			        var req = new XMLHttpRequest();
+			        req.onreadystatechange = function() {
+			            if (req.readyState == 4 && req.status == 200) {
+			                var data = JSON.parse(req.response);
+			                resolve(data);
+			            }
+			            else if (req.readyState == 4) {
+			                reject("Error: " + req.status);
+			            }
+			        };
+			        req.open("GET", url, true);
+			        req.send();
+			    });
+			    return p;
+			}
+
+
+
+		</script>
+
+
+
+		<title> Amir's Web Page </title>
+		<meta charset = "utf-8"/>
+		<link rel = "stylesheet" href = "style.css"/>
+
+		</head>
+
+		<body>
+
+			<div id = "google_translate_element"></div>
+
+
+
+
+
+			<nav class = "navbar">
+				<span class = "navbar-toggle" id = "js-navbar-toggle">
+					<i class = "fas fa-bars"></i>
+				</span>
+
+				<ul class="main-nav" id="js-menu">
+					<li>
+						<a href = "index.html" class = "nav-links">Home</a>
+					</li>
+
+					<li>
+						<a href = "Projects.html" class = "nav-links">Projects</a>
+					</li>
+
+					<li>
+						<a href = "resumé.html" class = "nav-links">Resumé</a>
+					</li>
+				</ul>
+
+			</nav>
+
+			<div>
+				<li id = "test"></li>
+			</div>
+	
+
+			<div style = "position:absolute; top: 90px; left: 815px;">
+				<img src = "file:///Users/nadi9686/Desktop/WebDevProj/Lifetouch%20Portrait.jpg" width = "150" height = "300" style = "transform:rotate(270deg);" class = floatright alt = "My photo">
+			</div>
+
+			<div style = "position:absolute; top: 90px; left: 400px">
+				<img src = "file:///Users/nadi9686/Desktop/WebDevProj/750sheild.jpg" width = "150" height = "100">
+			</div>	
+
+			<div class = "floatleft" style = "position:absolute; top: 80px; left:50px">
+				<font color = "white">
+				<h1><b> Education </b></h1>
+
+					<p>
+						<b> Education </b>
+
+						-University of St. Thomas, St.Paul, MN
+						Bachelor of Science in Computer Science
+
+						-Mounds Park Academy, St. Paul, MN
+						Highschool Diploma
+
+					</p>
+
+
+				</h1>
+			</div>
+			<div class = "floatright" style = "position:absolute; top: 415px; left: 815px;">
+
+				<h2><b> About Me </b></h2>
+
+					<p>
+						I was born in Roseville Minnesota, but grew up in a small home in
+						Tehran, the capital of Iran. I grew up playing different sport like basketball,
+						tennis, soccer and heavy influence in playing videogames. This is part of the reason why
+						I have chosen Computer Science as my major, I hope to oneday be one of the coders who works
+						on different videogames.
+
+					</p>
+
+			</div>
+
+			<div class = "floatleft" style = "position:absolute; top: 250px; left: 50px;">
+
+				<h3><b> Accomplishments/Goals </b></h3>
+
+					<p>
+						Some of my goals correspond with what I've stated in my About Me. I hope to one day work at a
+						company that produces videogames and to be a software engineer for that company. I would also like to one day start my own company with a few other close friends in relatable fields of work and create a company from scratch.
+
+						A few accomplishments include my ability to bring together different people who immigrated from Iran to Minnesota through an organization called PSOM. This organizations is able to bring these people together by throwing events and allowing these Iranian immigrants to meet and connect with other Iranians in Minnesota, allowing them to build connections and be apart of the Iranian community. At PSOM I'm one of these event organizers and promoters.
+
+					</p>
+
+			</div>
+
+			<div class = "floatright" style = "position:absolute; top:300px; left: 450px">
+				<ul id = myList onload = "Init();">
+					<li>Internship</li>
+					<li>Classes</li>
+				</ul>
+
+
+		</body>
+
+
+
+</html>
